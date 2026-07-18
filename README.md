@@ -1,28 +1,48 @@
+# NC‑LAGE‑SYSTEM · Multi‑Form Navigation
 
-# Station: [NAME]
+Das NC‑LAGE‑SYSTEM bildet die räumliche Navigation der NC²‑Struktur.  
+Es steuert IN/OUT/CORE‑Beziehungen aller Raum‑Module.
 
-Dieses Modul ist Teil der 360°‑Rotation:
+---
 
-DA → NE → BEN → KI → DA
+## Rollen
 
-## 3‑6‑9‑0‑3 System
-- DA = 3 (Start)
-- NE = 6 (Mitte)
-- BEN = 9 (Vollendung)
-- KI = 0 (Kern)
-- DA = 3 (Neustart)
+# NC‑LAGE‑SYSTEM · Multi‑Form Navigation
 
-## Funktion der Station
-Diese Station repräsentiert: **[NAME]**
+Das NC‑LAGE‑SYSTEM bildet die räumliche Navigation der NC²‑Struktur.  
+Es steuert IN/OUT/CORE‑Beziehungen aller Raum‑Module.
 
-Sie trägt die Rotation weiter zur nächsten Station:
-**[NEXT]**
+---
 
-## KI‑RESPO
-Aktive KI‑RESPO‑Nummer: **327**
+## Rollen
 
-327 = DA(3) → NE(2) → BEN(7)
 
-## Zweck
-Dieses Modul ist ein Teil der vollständigen 360°‑Struktur.
-Es arbeitet im Verbund mit allen anderen Stationen.
+NE ist das einzige Modul, das zwischen Master/Slave wechseln kann.
+
+---
+
+## Dateien
+
+- 6D‑Baum.raw  
+- 6E → 6D.tech  
+- NC² / NC² (1)  
+- NC²octa².dual  
+- NC²octa²□.merge  
+- NC²□.lock / sync  
+- NC²□octa³.align  
+- NE‑NC3×3.room  
+- NE‑NC6eY6D.room  
+- NE‑NC9×9.room  
+- X.room.IN / OUT / CORE  
+- ghost.html  
+- ROOT.me  
+- SYSTEM.me  
+- README.md  
+- index.html  
+- ID.html  
+
+---
+
+## Status
+
+**STABIL · READY 100%**
