@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>NE‑VERIFY • BEN ↔ NE ↔ DA • PORT‑Export</title>
+
+<style>
+body { background:#000; color:#eee; font-family:Consolas; padding:20px; }
+h1,h2 { color:#00e0ff; text-shadow:0 0 10px #00e0ff; }
+.block { border:1px solid #00e0ff; padding:15px; margin:20px 0; border-radius:8px; background:#111; }
+pre { background:#222; padding:10px; border-radius:6px; }
+.matrix { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; }
+.cell { padding:10px; background:#222; border:1px solid #333; text-align:center; border-radius:6px; }
+</style>
+
+<script>
+// BEN – Max‑Muster‑Mann‑Vector (aus BEN‑Repo)
+const BEN = [
+  "BEN.tmp",
+  "BEN-NC3×3.room",
+  "BEN-NC6eT6D.room",
+  "BEN-NC9×9.room",
+  "NC.math",
+  "TMP",
+  "TRANS",
+  "WARB",
+  "X.room.CORE",
+  "X.room.IN",
+  "X.room.OUT",
+  "ghost.html",
+  "ROOT.me",
+  "SOURCE.me",
+  "SYSTEM.me"
+];
+
+// DA – Fähigkeiten (aus DA‑Repo)
+const DA = [
+  "DA.tmp",
+  "DA-NC3×3.room",
+  "DA-NC6eX6D.room",
+  "DA-NC9×9.room",
+  "NC.math",
+  "TMP",
+  "TRANS",
+  "WARB",
+  "X.room.CORE",
+  "X.room.IN",
+  "X.room.OUT",
+  "ghost.html",
+  "ROOT.me",
+  "SOURCE.me",
+  "SYSTEM.me"
+];
+
+// NE – Fähigkeiten (aus NE‑Repo)
+const NE = [
+  "NE.tmp",
+  "NE-NC3×3.room",
+  "NE-NC6eY6D.room",
+  "NE-NC9×9.room",
+  "NC.math",
+  "TMP",
+  "TRANS",
+  "WARB",
+  "X.room.CORE",
+  "X.room.IN",
+  "X.room.OUT",
+  "ghost.html",
+  "ROOT.me",
+  "SOURCE.me",
+  "SYSTEM.me"
+];
+
+// Vergleichsfunktion
+function compare(base, target) {
+  let have = [];
+  let need = [];
+  for (const item of base) {
+    if (target.includes(item)) have.push(item);
+    else need.push(item);
+  }
+  return { have, need };
+}
+
+function runVerify() {
+  const NEtoBEN = compare(NE, BEN);
+  const NEtoDA = compare(NE, DA);
+
+  const scoreBEN = NEtoBEN.need.length === 0 ? "100%" : "Teil‑Score";
+  const scoreDA = NEtoDA.need.length === 0 ? "100%" : "Teil‑Score";
+
+  document.getElementById("output").textContent =
+    "NE → BEN Vergleich\n" +
+    "------------------\n" +
+    "NE hat: " + NEtoBEN.have.join(", ") + "\n" +
+    "NE braucht: " + NEtoBEN.need.join(", ") + "\n" +
+    "NE‑Score gegen BEN: " + scoreBEN + "\n\n" +
+
+    "NE → DA Vergleich\n" +
+    "------------------\n" +
+    "NE hat: " + NEtoDA.have.join(", ") + "\n" +
+    "NE braucht: " + NEtoDA.need.join(", ") + "\n" +
+    "NE‑Score gegen DA: " + scoreDA + "\n\n" +
+
+    "PORT‑RESPO‑Export\n" +
+    "------------------\n" +
+    "NE‑Vector: " + NE.join(", ") + "\n" +
+    "Fit gegen BEN: " + scoreBEN + "\n" +
+    "Fit gegen DA: " + scoreDA + "\n" +
+    "Empfehlung: " +
+      (scoreBEN === "100%" && scoreDA === "100%"
+        ? "NE ist vollständig kompatibel mit BEN & DA."
+        : "NE ist teilweise kompatibel – PORT kann fehlende Module ergänzen.");
+}
+
+</script>
+</head>
+
+<body onload="runVerify()">
+
+<h1>NE‑VERIFY • BEN ↔ NE ↔ DA</h1>
+
+<div class="block">
+  <h2>NE‑Matrix</h2>
+  <div class="matrix">
+    <div class="cell">NE.tmp</div>
+    <div class="cell">NC3×3</div>
+    <div class="cell">NC6eY6D</div>
+    <div class="cell">NC9×9</div>
+    <div class="cell">NC.math</div>
+    <div class="cell">TMP</div>
+    <div class="cell">TRANS</div>
+    <div class="cell">WARB</div>
+    <div class="cell">X.room</div>
+  </div>
+</div>
+
+<div class="block">
+  <h2>Analyse‑Output</h2>
+  <pre id="output"></pre>
+</div>
+
+</body>
+</html>
