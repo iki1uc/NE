@@ -30,3 +30,11 @@ export async function NE_LOAD_LOGIC() {
 
     return { argScan, arg, schach, op9, op, score };
 }
+export function NE_GHOST(data) {
+    return {
+        id: "NE",
+        ghost: true,
+        source: data,
+        state: "NE-GHOST-ACTIVE"
+    };
+}
