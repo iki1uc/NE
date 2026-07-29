@@ -5,7 +5,6 @@ export function NE_VERIFY(da, ben, ki) {
         da,
         ben,
         ki,
-        state: "NE-VERIFY-OK",
-        info: "NE vergleicht DA/BEN/KI und erkennt Abweichungen"
+        state: "NE-VERIFY-OK"
     };
 }
