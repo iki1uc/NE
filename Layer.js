@@ -3,7 +3,6 @@ export function NE_GHOST(data) {
         id: "NE",
         ghost: true,
         source: data,
-        state: "NE-GHOST-ACTIVE",
-        info: "NE erzeugt Ghost-Layer aus Fehlerdaten"
+        state: "NE-GHOST-ACTIVE"
     };
 }
