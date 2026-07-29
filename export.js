@@ -20,3 +20,13 @@ export async function NE_PREFETCH() {
         state: "NE-PREFETCH-READY"
     };
 }
+export async function NE_LOAD_LOGIC() {
+    const argScan = await fetch("RESPO_ARG_SCAN.tmp").then(r => r.text());
+    const arg     = await fetch("arg.tmp").then(r => r.text());
+    const schach  = await fetch("SCHACH.tmp").then(r => r.text());
+    const op9     = await fetch("9Operator.me").then(r => r.text());
+    const op      = await fetch("operator.tmp").then(r => r.text());
+    const score   = await fetch("score.tmp").then(r => r.text());
+
+    return { argScan, arg, schach, op9, op, score };
+}
