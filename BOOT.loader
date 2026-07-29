@@ -1,0 +1,12 @@
+export async function NE_BOOT() {
+
+    const pre = await NE_PREFETCH();
+
+    return {
+        boot: "OK",
+        axiome: pre.axiome,
+        prefetch: pre,
+        vector: "NC.vector.next-ready",
+        state: "NE-BOOT-OK"
+    };
+}
