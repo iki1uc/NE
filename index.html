@@ -1,195 +1,57 @@
 <!DOCTYPE html>
-<html lang="de">
+<html>
 <head>
 <meta charset="UTF-8">
-<title>NE • UNI‑RESPO Engine</title>
+<title>NE · Negativ-Axiom · Prefetch · ECO</title>
 
 <style>
-body {
-  background:#000;
-  color:#eee;
-  font-family:Consolas, monospace;
-  padding:20px;
-}
-h1,h2 {
-  color:#00e0ff;
-  text-shadow:0 0 10px #00e0ff;
-}
-.block {
-  border:1px solid #00e0ff;
-  padding:15px;
-  margin:20px 0;
-  border-radius:8px;
-  background:#111;
-}
-.matrix {
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:10px;
-}
-.axis8 {
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:10px;
-}
-.cell {
-  padding:10px;
-  background:#222;
-  border:1px solid #333;
-  text-align:center;
-  border-radius:6px;
-}
-.scanbox {
-  background:#222;
-  border:1px solid #444;
-  padding:10px;
-  margin-top:10px;
-}
-.verify {
-  background:#1a1a1a;
-  border:1px solid #5500ff;
-  padding:10px;
-  margin-top:10px;
-}
+body { background:#000; color:#0f0; font-family:Consolas, monospace; padding:20px; }
+pre { background:#111; padding:10px; border-left:3px solid #0f0; }
+button { background:#0f0; color:#000; padding:10px 20px; border:none; cursor:pointer; }
 </style>
 </head>
 
 <body>
 
-<h1>NE‑RESPO • UNI‑RESPO • WELT‑RESPO</h1>
+<h1>NE · Negativ-Axiom · Prefetch · ECO</h1>
 
-<!-- FUNKTION.matrix -->
-<div class="block">
-  <h2>FUNKTION.matrix</h2>
-  <p>Achsen: TMP / TRANS / WARB<br>
-     Felder: WLOCH / KANAL / GATE</p>
+<button onclick="RUN_NE()">NE START</button>
 
-  <div class="matrix">
-    <div class="cell">TMP.WLOCH</div>
-    <div class="cell">TMP.KANAL</div>
-    <div class="cell">TMP.GATE</div>
+<pre id="out">NE wartet…</pre>
 
-    <div class="cell">TRANS.WLOCH</div>
-    <div class="cell">TRANS.KANAL</div>
-    <div class="cell">TRANS.GATE</div>
+<script type="module">
 
-    <div class="cell">WARB.WLOCH</div>
-    <div class="cell">WARB.KANAL</div>
-    <div class="cell">WARB.GATE</div>
-  </div>
-</div>
+import { NE_AXIOM } from "./NegativAxiom.js";
+import { NE_PREFETCH } from "./Prefetch.js";
+import { NE_LOAD_LOGIC } from "./ECO.js";
+import { NE_GHOST } from "./Layer.js";
+import { NE_VERIFY } from "./Verify.js";
 
-<!-- NE‑Kosmos -->
-<div class="block">
-  <h2>NE‑Kosmos</h2>
-  <div class="matrix">
-    <div class="cell">NE</div>
-    <div class="cell">NE.tmp</div>
-    <div class="cell">NE.trans</div>
+async function RUN_NE() {
 
-    <div class="cell">NE.warb</div>
-    <div class="cell">NE‑NC3×3</div>
-    <div class="cell">NE‑NC6eY6D</div>
+    const pre = await NE_PREFETCH();
+    const logic = await NE_LOAD_LOGIC();
 
-    <div class="cell">NE‑NC9×9</div>
-    <div class="cell">NC.math</div>
-    <div class="cell">verify.T</div>
-  </div>
-</div>
+    const ghost = NE_GHOST(pre);
+    const verify = NE_VERIFY(pre.alt.tmpDA, pre.alt.tmpBEN, pre.alt.tmpNE);
 
-<!-- UNI‑Axiome -->
-<div class="block">
-  <h2>UNI‑Axiome</h2>
-  <div class="matrix">
-    <div class="cell">C.tmp</div>
-    <div class="cell">X.tmp</div>
-    <div class="cell">Z.tmp</div>
+    const eco = logic.score.length % 100;
 
-    <div class="cell">DA.tmp</div>
-    <div class="cell">NE.tmp</div>
-    <div class="cell">BEN.tmp</div>
+    const out = {
+        axiome: NE_AXIOM,
+        prefetch: pre,
+        logic,
+        ghost,
+        verify,
+        eco,
+        state: "NE-READY"
+    };
 
-    <div class="cell">DE.tmp</div>
-    <div class="cell">TR.tmp</div>
-    <div class="cell">EN.tmp</div>
-  </div>
-</div>
+    document.getElementById("out").innerText =
+        JSON.stringify(out, null, 2);
+}
 
-<!-- X.room -->
-<div class="block">
-  <h2>X‑Room‑System</h2>
-  <div class="matrix">
-    <div class="cell">X.room.CORE</div>
-    <div class="cell">X.room.IN</div>
-    <div class="cell">X.room.OUT</div>
-  </div>
-</div>
-
-<!-- RUN8 -->
-<div class="block">
-  <h2>RUN8 • OCTACORE</h2>
-  <div class="axis8">
-    <div class="cell">N</div>
-    <div class="cell">S</div>
-    <div class="cell">E</div>
-    <div class="cell">W</div>
-    <div class="cell">UP</div>
-    <div class="cell">DOWN</div>
-    <div class="cell">IN</div>
-    <div class="cell">OUT</div>
-  </div>
-</div>
-
-<!-- SCAN -->
-<div class="block">
-  <h2>SCAN‑Modul</h2>
-  <p>scan.language + ORT.scan aktiv</p>
-
-  <div class="scanbox">
-    <p><strong>SCAN:</strong></p>
-    <input type="text" id="scanInput" placeholder="scan eingeben…" style="width:100%; padding:8px;">
-    <pre id="scanOutput" style="margin-top:10px;"></pre>
-  </div>
-
-  <script>
-    document.getElementById("scanInput").addEventListener("input", function() {
-      const v = this.value;
-      document.getElementById("scanOutput").textContent =
-        "SCAN → " + v + "\n" +
-        "ORT.scan → " + v + "\n" +
-        "scan.language → " + v;
-    });
-  </script>
-</div>
-
-<!-- VERIFY -->
-<div class="block">
-  <h2>NE.verify</h2>
-  <div class="verify" id="verifyBox">
-    Läuft Analyse…
-  </div>
-
-<script>
-document.getElementById("verifyBox").textContent =
-  "NE.verify:\n" +
-  "- NE.tmp vorhanden\n" +
-  "- NE‑NC3×3 / NE‑NC6eY6D / NE‑NC9×9 erkannt\n" +
-  "- NC.math aktiv\n" +
-  "- verify.T.html gefunden\n" +
-  "- C.tmp / X.tmp / Z.tmp geladen\n" +
-  "- DA.tmp / BEN.tmp aktiv\n" +
-  "- DE.tmp / TR.tmp / EN.tmp aktiv\n" +
-  "- X.room.CORE / IN / OUT aktiv\n" +
-  "- ghost.html erkannt\n" +
-  "- 9×9‑Operator.me aktiv\n" +
-  "- SYSTEM.me / ROOT.me / SOURCE.me vollständig\n" +
-  "- FUNKTION.matrix geladen\n" +
-  "- RUN8 Achsen aktiv\n" +
-  "- UNI.bridge kompatibel\n" +
-  "- Keine Fehler erkannt";
 </script>
-
-</div>
 
 </body>
 </html>
