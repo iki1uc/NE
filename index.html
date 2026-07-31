@@ -1,57 +1,76 @@
 <!DOCTYPE html>
-<html>
+<html lang="de">
 <head>
 <meta charset="UTF-8">
-<title>NE · Negativ-Axiom · Prefetch · ECO</title>
-
+<title>NE – Lage‑Raum</title>
 <style>
-body { background:#000; color:#0f0; font-family:Consolas, monospace; padding:20px; }
-pre { background:#111; padding:10px; border-left:3px solid #0f0; }
-button { background:#0f0; color:#000; padding:10px 20px; border:none; cursor:pointer; }
+body {
+  font-family: serif;
+  background: #fafafa;
+  padding: 40px;
+  color: #222;
+}
+.section {
+  margin: 20px auto;
+  max-width: 700px;
+  padding: 20px;
+  border-left: 4px solid #444;
+  background: white;
+}
+a {
+  color: #444;
+  text-decoration: none;
+  font-weight: bold;
+}
+a:hover {
+  text-decoration: underline;
+}
 </style>
 </head>
-
 <body>
 
-<h1>NE · Negativ-Axiom · Prefetch · ECO</h1>
+<h1>NE – Lage‑Raum</h1>
 
-<button onclick="RUN_NE()">NE START</button>
+<div class="section">
+  <h2>Dokumente (NEU)</h2>
+  <p><a href="README.md">README.md</a></p>
+  <p><a href="ID.html">ID.html</a></p>
+</div>
 
-<pre id="out">NE wartet…</pre>
+<div class="section">
+  <h2>CSV‑Achsen</h2>
+  <ul>
+    <li><a href="achse-bedeutung-8.csv">Achse Bedeutung</a></li>
+    <li><a href="achse-funktion-3.csv">Achse Funktion</a></li>
+    <li><a href="achse-modul-12.csv">Achse Modul</a></li>
+    <li><a href="achse-quelle-12.csv">Achse Quelle</a></li>
+    <li><a href="zustand-bedeutung-4.csv">Zustand Bedeutung</a></li>
+  </ul>
+</div>
 
-<script type="module">
+<div class="section">
+  <h2>Altes System</h2>
+  <ul>
+    <li>NC.math</li>
+    <li>NENC.room</li>
+    <li>NENC3.room</li>
+    <li>NENC6e.room</li>
+    <li>NegativAxiom.js</li>
+    <li>ECO.js</li>
+    <li>Prefetch.js</li>
+    <li>Verify.js</li>
+    <li>ghost.html</li>
+    <li>X.room.CORE</li>
+    <li>X.room.IN</li>
+    <li>X.room.OUT</li>
+    <li>*.tmp Dateien</li>
+  </ul>
+</div>
 
-import { NE_AXIOM } from "./NegativAxiom.js";
-import { NE_PREFETCH } from "./Prefetch.js";
-import { NE_LOAD_LOGIC } from "./ECO.js";
-import { NE_GHOST } from "./Layer.js";
-import { NE_VERIFY } from "./Verify.js";
-
-async function RUN_NE() {
-
-    const pre = await NE_PREFETCH();
-    const logic = await NE_LOAD_LOGIC();
-
-    const ghost = NE_GHOST(pre);
-    const verify = NE_VERIFY(pre.alt.tmpDA, pre.alt.tmpBEN, pre.alt.tmpNE);
-
-    const eco = logic.score.length % 100;
-
-    const out = {
-        axiome: NE_AXIOM,
-        prefetch: pre,
-        logic,
-        ghost,
-        verify,
-        eco,
-        state: "NE-READY"
-    };
-
-    document.getElementById("out").innerText =
-        JSON.stringify(out, null, 2);
-}
-
-</script>
+<div class="section">
+  <h2>Verständnis für alle</h2>
+  <p>Shogun = Raum · Schach = Regel · Skat = Mensch</p>
+</div>
 
 </body>
 </html>
