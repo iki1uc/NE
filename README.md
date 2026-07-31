@@ -1,48 +1,80 @@
-# NC‑LAGE‑SYSTEM · Multi‑Form Navigation
+# NE – NC‑LAGE‑SYSTEM · Multi‑Form Navigation
 
-Das NC‑LAGE‑SYSTEM bildet die räumliche Navigation der NC²‑Struktur.  
-Es steuert IN/OUT/CORE‑Beziehungen aller Raum‑Module.
+## 1. Zweck
+NE ist der Lage‑Raum der NC²‑Struktur.
+Er steuert IN/OUT/CORE‑Beziehungen aller Raum‑Module und verbindet
+das alte NC‑System mit dem neuen RE‑Vector‑System.
 
----
-
-## Rollen
-
-# NC‑LAGE‑SYSTEM · Multi‑Form Navigation
-
-Das NC‑LAGE‑SYSTEM bildet die räumliche Navigation der NC²‑Struktur.  
-Es steuert IN/OUT/CORE‑Beziehungen aller Raum‑Module.
+NE ist die Lage‑Station:
+- ALT: NC‑LAGE‑SYSTEM
+- NEU: RE‑Vector‑System
 
 ---
 
-## Rollen
+## 2. Die 6‑Werte‑Norm (Vector)
 
+1. Gravitation (G) – Zentrum  
+2. Magnetismus (M) – Richtung  
+3. Anziehung (A) – Wertfluss  
+4. Raumfluss (R) – Continuum  
+5. Zustand (Z) – Phase  
+6. Quelle (Q) – Ursprung  
 
-NE ist das einzige Modul, das zwischen Master/Slave wechseln kann.
+Vector‑Formel: (G, M, A, R, Z, Q)
 
 ---
 
-## Dateien
+## 3. Die Klammer (Verständnis für alle)
 
-- 6D‑Baum.raw  
-- 6E → 6D.tech  
-- NC² / NC² (1)  
-- NC²octa².dual  
-- NC²octa²□.merge  
-- NC²□.lock / sync  
-- NC²□octa³.align  
-- NE‑NC3×3.room  
-- NE‑NC6eY6D.room  
-- NE‑NC9×9.room  
-- X.room.IN / OUT / CORE  
-- ghost.html  
-- ROOT.me  
-- SYSTEM.me  
+Shogun = Raum  
+Schach = Regel  
+Skat = Mensch
+
+---
+
+## 4. Neues System (RE‑Modell)
+
 - README.md  
-- index.html  
 - ID.html  
+- index.html  
+- CSV‑Achsen  
+- Vector‑Norm  
+- Symbol‑Identität  
 
 ---
 
-## Status
+## 5. Altes System (NC‑Modell)
 
-**STABIL · READY 100%**
+- NC.math  
+- NENC.room  
+- NENC3.room  
+- NENC6e.room  
+- NegativAxiom.js  
+- ECO.js  
+- Prefetch.js  
+- Verify.js  
+- ghost.html  
+- X.room.CORE  
+- X.room.IN  
+- X.room.OUT  
+- *.tmp Dateien  
+
+Diese Dateien bleiben bestehen und werden nicht verändert.
+
+---
+
+## 6. Lage‑Modus (NE)
+
+NE ist die Lage‑Station:
+- definiert Position  
+- steuert IN/OUT/CORE  
+- verbindet ALT und NEU  
+- stabilisiert Navigation  
+
+---
+
+## 7. Zusammenfassung
+NE ist der Lage‑Raum der NC²‑Struktur.
+Er verbindet das alte NC‑System mit dem neuen RE‑Vector‑System.
+
+Er ist rein, klar, stabil und vektor‑gemäß.
